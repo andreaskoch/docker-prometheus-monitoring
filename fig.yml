@@ -2,6 +2,11 @@ dashboard:
   image: prom/promdash
   environment:
     DATABASE_URL: mysql2://promdash:promdashpassword123@db/promdash
+    RAILS_ENV: development
+    PROMDASH_MYSQL_HOST: db
+    PROMDASH_MYSQL_DATABASE: promdash
+    PROMDASH_MYSQL_USERNAME: promdash
+    PROMDASH_MYSQL_PASSWORD: promdashpassword123
   links:
    - db
    - monitor
