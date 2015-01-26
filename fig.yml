@@ -1,18 +1,19 @@
 dashboard:
   image: prom/promdash
   environment:
-    DATABASE_URL: mysql2://promdash:promdashpassword123@dbserver/promdash
+    DATABASE_URL: mysql2://promdash:promdashpassword123@db/promdash
   links:
-   - "db:dbserver"
-   - "monitor:prometheusserver"
+   - db
+   - monitor
   ports:
    - "3000:3000"
 db:
-  image: postgres:latest
+  image: mysql:latest
   environment:
-    POSTGRES_DATABASE: promdash
-    POSTGRES_USER: promdash
-    POSTGRES_PASSWORD: promdashpassword123
+    MYSQL_ROOT_PASSWORD: pw
+    MYSQL_DATABASE: promdash
+    MYSQL_USER: promdash
+    MYSQL_PASSWORD: promdashpassword123
 monitor:
   image: prom/prometheus
   volumes:
