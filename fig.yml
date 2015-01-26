@@ -1,0 +1,30 @@
+dashboard:
+  image: prom/promdash
+  environment:
+    DATABASE_URL: mysql2://promdash:promdashpassword123@dbserver/promdash
+  links:
+   - "db:dbserver"
+   - "monitor:prometheusserver"
+  ports:
+   - "3000:3000"
+db:
+  image: postgres:latest
+  environment:
+    POSTGRES_DATABASE: promdash
+    POSTGRES_USER: promdash
+    POSTGRES_PASSWORD: promdashpassword123
+monitor:
+  image: prom/prometheus
+  volumes:
+   - prometheus.conf:/prometheus.conf
+  links:
+   - "metrics:metricsserver"
+  ports:
+   - "9090:9090"
+metrics:
+  build: container_exporter
+  volumes:
+   - /sys/fs/cgroup:/cgroup
+   - /var/run/docker.sock:/var/run/docker.sock
+  expose:
+   - 8080
