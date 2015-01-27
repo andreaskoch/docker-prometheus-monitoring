@@ -12,7 +12,6 @@ dashboard:
    - monitor
   ports:
    - "3000:3000"
-  command: bin/rake db:migrate RAILS_ENV=development
 db:
   image: mysql:latest
   environment:
