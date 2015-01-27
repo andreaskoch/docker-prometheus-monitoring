@@ -1,0 +1,3 @@
+[submodule "container_exporter"]
+	path = container_exporter
+	url = git@github.com:docker-infra/container_exporter.git
