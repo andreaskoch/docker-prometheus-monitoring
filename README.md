@@ -7,6 +7,35 @@ Monitoring for Docker hosts using Prometheus and fig.
 1. Docker
 2. fig
 
+## Installation
+
+This repository contains a reference the repository [github.com/docker-infra/container_exporter](https://github.com/docker-infra/container_exporter/) as a submodule. To download this repository with the submodule you must use the `--recursive` flag of the git **clone** command:
+
+```
+git clone --recursive git@github.com:andreaskoch/docker-prometheus-monitoring.git
+```
+
+After that your repository folder should look something like this:
+
+```
+docker-prometheus-monitoring
+├── container_exporter
+│   ├── devicemap.go
+│   ├── Dockerfile
+│   ├── docker_manager.go
+│   ├── exporter.go
+│   ├── main.go
+│   ├── manager.go
+│   ├── README.md
+│   └── _vendor
+│       └── ...
+├── fig.yml
+├── files
+│   └── screenshots
+├── prometheus.conf
+└── README.md
+```
+
 ## Usage
 
 ```bash
